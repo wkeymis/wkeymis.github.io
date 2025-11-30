@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Phone, Send, CheckCircle } from 'lucide-react';
+import { Mail, Linkedin, Github, Phone, Send, CheckCircle, Sparkles } from 'lucide-react';
 import { contactInfo } from '../data/portfolioData';
 
 const Contact = () => {
@@ -71,7 +71,7 @@ const Contact = () => {
           </motion.p>
         </div>
 
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 px-4 sm:px-6">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -79,12 +79,12 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8">
-              <h3 className="text-2xl font-display font-semibold mb-6 text-gray-800">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-display font-semibold mb-4 sm:mb-6 text-gray-800">
                 Send a Message
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Name
@@ -96,7 +96,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors bg-white"
+                    className="w-full px-4 py-2 sm:py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors bg-white text-sm sm:text-base"
                     placeholder="Your name"
                   />
                 </div>
@@ -112,7 +112,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors bg-white"
+                    className="w-full px-4 py-2 sm:py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors bg-white text-sm sm:text-base"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -127,7 +127,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
+                    rows={4}
                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors resize-none bg-white"
                     placeholder="Tell me about your project or inquiry..."
                   />
@@ -165,32 +165,44 @@ const Contact = () => {
             className="space-y-8"
           >
             {/* Direct Contact */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8">
-              <h3 className="text-2xl font-display font-semibold mb-6 text-gray-800">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-display font-semibold mb-4 sm:mb-6 text-gray-800">
                 Direct Contact
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-6 md:space-y-8">
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-primary-50 to-accent-50 hover:from-primary-100 hover:to-accent-100 transition-colors group"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-gradient-to-r from-primary-50 to-accent-50 hover:from-primary-100 hover:to-accent-100 transition-colors group"
                 >
-                  <div className="p-3 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
-                    <Mail className="w-6 h-6 text-primary-600" />
+                  <div className="p-2 sm:p-3 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600" />
                   </div>
-                  <div>
-                    <div className="text-sm text-gray-500 font-medium">Email</div>
-                    <div className="text-gray-800 font-semibold">{contactInfo.email}</div>
+                  <div className="text-left">
+                    <div className="text-xs sm:text-sm text-gray-500 font-medium">Email</div>
+                    <div className="text-sm sm:text-base text-gray-800 font-semibold break-words">{contactInfo.email}</div>
+                  </div>
+                </a>
+                <a
+                  href={`tel:${contactInfo.phone.replace(/\D/g, '')}`}
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-gradient-to-r from-primary-50 to-accent-50 hover:from-primary-100 hover:to-accent-100 transition-colors group"
+                >
+                  <div className="p-2 sm:p-3 bg-white rounded-xl shadow-sm group-hover:shadow-md transition-shadow">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs sm:text-sm text-gray-500 font-medium">Phone</div>
+                    <div className="text-sm sm:text-base text-gray-800 font-semibold">{contactInfo.phone}</div>
                   </div>
                 </a>
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8">
-              <h3 className="text-2xl font-display font-semibold mb-6 text-gray-800">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-display font-semibold mb-4 sm:mb-6 text-gray-800">
                 Connect Online
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {socialLinks.map((link, index) => {
                   const Icon = link.icon;
                   return (
@@ -199,16 +211,14 @@ const Contact = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-col items-center gap-3 p-4 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 hover:shadow-lg transition-all group"
+                      className="flex flex-col items-center justify-center p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-white to-gray-50 hover:shadow-md transition-all duration-300 border border-gray-100 text-center"
                       whileHover={{ y: -5 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <div className={`p-3 bg-gradient-to-br ${link.color} rounded-xl shadow-md`}>
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                        {link.label}
-                      </span>
+                      <span className="mt-2 text-xs sm:text-sm font-medium text-gray-700">{link.label}</span>
                     </motion.a>
                   );
                 })}
@@ -217,16 +227,24 @@ const Contact = () => {
 
             {/* Availability Note */}
             <motion.div
-              className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl p-6 border-2 border-primary-200"
+              className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl p-4 sm:p-6 border-2 border-primary-200"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.4 }}
             >
-              <p className="text-gray-700 text-center">
-                <span className="font-semibold">Open to collaborations</span> in protein design, 
-                computational biology, and biotech applications.
-              </p>
+              <div className="flex items-start">
+                <div className="flex-shrink-0 p-2 bg-white rounded-lg shadow-sm">
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primary-600" />
+                </div>
+                <div className="ml-3 sm:ml-4">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-800">Open to Collaboration</h4>
+                  <p className="mt-1 text-xs sm:text-sm text-gray-600">
+                    I'm currently available for freelance projects and collaboration opportunities.
+                    Let's create something amazing together!
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
