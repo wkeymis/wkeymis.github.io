@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets and non-site docs
+# Note: already-tracked files must be removed from the index to be hidden
+.env
+.env.*
+README.md
+CUSTOMIZATION_GUIDE.md
+docs/
+notes/
